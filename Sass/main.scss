@@ -1,0 +1,259 @@
+@import '../Sass/global-rules/global-rules';
+
+
+.game-info {
+    display: flex;
+    .game-name{
+        flex: 1;
+    }
+    .category {
+        flex: 1;
+        text-align: right;
+        span {
+            text-transform: capitalize;
+            color: #e91e63;
+            font-weight: bold;
+            }
+    }
+}
+
+.hangman-drow {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 20px;
+    height: 324px;
+    .the-drow {
+        width: 90px;
+        height: 280px;
+        border-bottom: 4px solid #222;
+        position: relative;
+        margin: auto;
+        left: -60px;
+        display: none;
+    }
+    .the-stand {
+        position: absolute;
+        height: 100%;
+        width: 4px;
+        background-color: #222;
+        left: 50%;
+        margin-left: -2px;
+        display: none;
+    }
+    .the-hang{
+        display: none;
+        &::before {
+            content: '';
+            position: absolute;
+            height: 4px;
+            width: 100%;
+            background-color: #222;
+            left: 45px;
+            top: 20px;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 30px;
+            background-color: #222;
+            left: 133px;
+            top: 20px;
+        }
+    } 
+    .the-rope {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 4px dashed #222;
+        position: absolute;
+        top: 47px;
+        left: 99px;
+        display: none;
+    }
+    .the-man{
+        .head {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 4px solid #222;
+            position: absolute;
+            top: 57px;
+            left: 109px;
+            display: none;
+        }
+        .body {
+            position: absolute;
+            width: 4px;
+            background-color: #222;
+            height: 94px;
+            top: 106px;
+            left: 132px;
+            display: none;
+        }
+        .hands{
+            display: none;
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 4px;
+                top: 140px;
+                background-color: #222;
+            }
+            &::before {
+                left: 88px;
+                transform: rotate(30deg);
+            }
+            &::after {
+                left: 130px;
+                transform: rotate(-30deg);
+            }
+        }
+        .legs{
+            display: none;
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 4px;
+                top: 211px;
+                background-color: #222;
+            }
+            &::before {
+                left: 88px;
+                transform: rotate(-30deg);
+            }
+            &::after {
+                left: 130px;
+                transform: rotate(30deg);
+            }
+        }
+    }
+    &.Wrong-1 .the-drow{
+        display: block;
+    }
+    &.Wrong-2 .the-stand{
+        display: block;
+    }
+    &.Wrong-3 .the-hang{
+        display: block;
+    }
+    &.Wrong-4 .the-rope{
+        display: block;
+    }
+    &.Wrong-5 .head{
+        display: block;
+    }
+    &.Wrong-6 .body{
+        display: block;
+    }
+    &.Wrong-7 .hands{
+        display: block;
+    }
+    &.Wrong-8 .legs{
+        display: block;
+    }
+}
+
+.letters {
+    flex: 1;
+    padding: 15px;
+    text-align: center;
+    &.finished{
+        pointer-events: none;
+    }
+    .letter-box {
+        width: 55px;
+        height: 55px;
+        display: inline-block;
+        background-color: #009688;
+        color: #fff;
+        font-size: 24px;
+        margin-right: 10px;
+        line-height: 55px;
+        text-transform: uppercase;
+        cursor: pointer;
+        font-weight: bold;
+        margin-bottom: 10px;
+        transition: 0.3s;
+        &:hover{
+            background-color: #009687b4;
+        }
+        &.clicked{
+            background-color: #222;
+            opacity: .2;
+            pointer-events: none;
+        }
+    }
+}
+
+.letters-guess{
+    margin: 10px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 104px;
+    span{
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 60px;
+        text-transform: uppercase;
+        font-weight: bold;
+        background-color: #fdfdfd;
+        border-bottom: 2px solid #222;
+        transition: .3s;
+        &.with-space{
+            background: none;
+            border-bottom: none;
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 2px;
+                background-color: #222;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50% , -50%);
+            }
+        }
+    }
+}
+
+.popup{
+    position: absolute;
+    background-color: #009687c0;
+    width: 80%;
+    margin: auto;
+    color: #fff;
+    text-align: center;
+    padding:150px 20px;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    border: 1px solid #ccc;
+    .heading{
+        margin-bottom: 10px;
+    }
+    .nextButton{
+        border: none;
+        background-color: #fff;
+        color: #009688;
+        border-radius: 6px;
+        box-shadow: 0 0 10px #999;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+        margin: 20px;
+    }
+
+}

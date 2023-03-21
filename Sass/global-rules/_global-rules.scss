@@ -1,0 +1,25 @@
+
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Tahoma , sans-serif;
+    position: relative;
+}
+
+.container{
+    margin: 20px auto;
+    width: 1000px;
+}
+.row{
+    display: flex;
+}
+hr{
+    border: 1px solid #eee;
+}
